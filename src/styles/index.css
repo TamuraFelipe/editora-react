@@ -126,6 +126,10 @@ ul {
   overflow: auto;
   margin: 20px 0;
 }
+.livro p {
+  text-align: justify;
+  padding-inline: 10px;
+}
 .livro img {
   display: block;
   width: 180px;

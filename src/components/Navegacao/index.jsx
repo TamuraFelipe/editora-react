@@ -2,7 +2,7 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 let linkCurrent = {
-    color: "#027399"
+    color: "red"
 }
 
 export const Navegacao = () => {

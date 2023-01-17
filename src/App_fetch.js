@@ -13,20 +13,22 @@ import { Livro } from './components/Livro';
 import { NotFound } from './components/NotFound';
 
 import "./styles/index.css";
-import axios from "axios";
+//import axios from "axios";
 
 class App extends Component {
   state = {
     livros: [],
   };
   async componentDidMount(){
-    try{
-      const { data: livros } = await axios.get("./api/todosOsLivros.json");
-      this.setState({ livros });
-    } catch(error){
-      console.error(error);
-      document.querySelectorAll(".principal")[0].insertAdjacentHTML("beforeend", <p className="erro">Mensagem de erro</p>)
-    }
+    fetch("./api/todosOsLivros.json")
+      .then(response => response.json())
+      .then(livros => this.setState({livros}))
+      .catch(function(error){
+        document.querySelectorAll("main")[0].insertAdjacentHTML("beforeend", "<p class='alerta'>Mensagem de erro</p>")
+      })
+      .finally(function(){
+        console.log("Sempre retorna");
+      })
   }
   
   render(){
