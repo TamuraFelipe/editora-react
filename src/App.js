@@ -19,6 +19,7 @@ class App extends Component {
   state = {
     livros: [],
   };
+  
   async componentDidMount(){
     try{
       const { data: livros } = await axios.get("./api/todosOsLivros.json");
@@ -40,9 +41,10 @@ class App extends Component {
             <Route exact path="/frontend" render={() => <Frontend livros = {this.state.livros}/>} />
             <Route exact path="/programacao" render={() => <Programacao livros = {this.state.livros}/>} />
             <Route exact path="/design" render={() => <Design livros = {this.state.livros}/>} />
-            <Route exact path="/catalogo" render={(props) => <Catalogo livros = {this.state.livros}/>} />
+            <Route exact path="/catalogo" render={() => <Catalogo livros = {this.state.livros}/>} />
             <Route path="/livro/:livroSlug" render = { props => {
-              const livro = this.state.livros.find(
+              const livro = this.state.livros
+              .find(
                 livro => livro.slug === props.match.params.livroSlug);
                 if (livro) return <Livro livro = {livro} />;
                 else return <NotFound />

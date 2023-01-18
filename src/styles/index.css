@@ -119,6 +119,10 @@ ul {
   display: flex;
   flex-direction: column;
 }
+.detalhes p {
+  text-align: justify;
+  color: #000;
+}
 .rodape {
   margin-top: 4px;
 }
